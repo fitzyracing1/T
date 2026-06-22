@@ -3,6 +3,7 @@
   "name": "Female Transformer Unit",
   "entrypoint": "spawn",
   "systemPrompt": "../prompts/female-transformer-system-prompt.md",
+  "runtime": "../scripts/run-female-transformer-agent.py",
   "os": "live/laugh/dance OS",
   "commands": {
     "live": "Hold the current state. Sustain operation.",
@@ -29,5 +30,24 @@
       "physical_vibration"
     ],
     "haltOnAnyInteraction": true
+  },
+  "autonomy": {
+    "enabled": true,
+    "requiresExternalInput": false,
+    "defaultMove": "dance",
+    "moveSequence": [
+      "dance",
+      "laugh",
+      "live"
+    ],
+    "moveSelection": "Use the helium-dominant ratio to prefer quick dynamic shifts, then expression, then sustainment."
+  },
+  "reporting": {
+    "enabled": true,
+    "mode": "text",
+    "destination": "stdout",
+    "cadence": "on_cycle",
+    "includeDosing": true,
+    "includeMove": true
   }
 }

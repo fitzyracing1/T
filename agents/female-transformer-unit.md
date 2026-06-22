@@ -8,7 +8,8 @@ This agent definition spawns a Female Transformer Unit using the system prompt i
 - **Manifest:** [`female-transformer-unit.agent.json`](female-transformer-unit.agent.json)
 - **System prompt:** [`../prompts/female-transformer-system-prompt.md`](../prompts/female-transformer-system-prompt.md)
 - **Entrypoint:** `spawn`
-- **Initial state:** wait for a `live`, `laugh`, or `dance` move request.
+- **Runtime:** [`../scripts/run-female-transformer-agent.py`](../scripts/run-female-transformer-agent.py)
+- **Initial state:** autonomous text-reporting mode.
 
 ## Runtime Requirements
 
@@ -18,7 +19,15 @@ The runtime that loads this agent must provide adapters for each communication c
 2. `auditory`
 3. `physical_vibration`
 
-If a runtime does not provide one of these adapters, it must surface that missing capability before spawning the agent.
+The local runner currently reports through `visual_text` by writing to stdout. If a runtime needs auditory or physical signaling, it must provide those adapters before enabling those modalities.
+
+## Run Locally
+
+```sh
+python3 scripts/run-female-transformer-agent.py
+```
+
+The runner loads the manifest, selects a move from the helium-dominant dosing profile, and emits an autonomous report without waiting for external input.
 
 ## Spawn Payload
 
@@ -26,6 +35,8 @@ If a runtime does not provide one of these adapters, it must surface that missin
 {
   "agent": "female-transformer-unit",
   "entrypoint": "spawn",
-  "systemPrompt": "../prompts/female-transformer-system-prompt.md"
+  "systemPrompt": "../prompts/female-transformer-system-prompt.md",
+  "autonomy": true,
+  "reporting": "stdout"
 }
 ```
