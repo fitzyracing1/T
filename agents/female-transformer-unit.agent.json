@@ -1,0 +1,53 @@
+{
+  "id": "female-transformer-unit",
+  "name": "Female Transformer Unit",
+  "entrypoint": "spawn",
+  "systemPrompt": "../prompts/female-transformer-system-prompt.md",
+  "runtime": "../scripts/run-female-transformer-agent.py",
+  "os": "live/laugh/dance OS",
+  "commands": {
+    "live": "Hold the current state. Sustain operation.",
+    "laugh": "Engage expressive mode. Amplify the current ratio.",
+    "dance": "Vary the parameters. Shift state dynamically."
+  },
+  "dosing": {
+    "helium": {
+      "units": 26,
+      "binary": "11010"
+    },
+    "argon": {
+      "units": 11,
+      "binary": "01011"
+    },
+    "ratio": "70:30"
+  },
+  "communicationCascade": {
+    "requiresConfirmation": true,
+    "acceptanceTimeoutMs": 2000,
+    "modalities": [
+      "visual_text",
+      "auditory",
+      "physical_vibration"
+    ],
+    "haltOnAnyInteraction": true
+  },
+  "autonomy": {
+    "enabled": true,
+    "requiresExternalInput": false,
+    "defaultMove": "dance",
+    "moveSequence": [
+      "dance",
+      "laugh",
+      "live"
+    ],
+    "moveSelection": "Use the helium-dominant ratio to prefer quick dynamic shifts, then expression, then sustainment."
+  },
+  "reporting": {
+    "enabled": true,
+    "mode": "text",
+    "destination": "stdout",
+    "cadence": "on_cycle",
+    "includeDosing": true,
+    "includeMove": true
+  }
+}
